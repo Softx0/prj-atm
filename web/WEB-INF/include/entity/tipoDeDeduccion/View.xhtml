@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoDeDeduccionViewDlg" widgetVar="TipoDeDeduccionViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.ViewTipoDeDeduccionTitle}" closeOnEscape="true">
+
+            <h:form id="TipoDeDeduccionViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{tipoDeDeduccionController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewTipoDeDeduccionLabel_nombreTipoDeduccion}"/>
+                        <h:outputText value="#{tipoDeDeduccionController.selected.nombreTipoDeduccion}" title="#{bundle.ViewTipoDeDeduccionTitle_nombreTipoDeduccion}"/>
+
+                        <h:outputText value="#{bundle.ViewTipoDeDeduccionLabel_porcentaje}"/>
+                        <h:outputText value="#{tipoDeDeduccionController.selected.porcentaje}" title="#{bundle.ViewTipoDeDeduccionTitle_porcentaje}"/>
+
+                        <h:outputText value="#{bundle.ViewTipoDeDeduccionLabel_idTipoDeduccion}"/>
+                        <h:outputText value="#{tipoDeDeduccionController.selected.idTipoDeduccion}" title="#{bundle.ViewTipoDeDeduccionTitle_idTipoDeduccion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PF('TipoDeDeduccionViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

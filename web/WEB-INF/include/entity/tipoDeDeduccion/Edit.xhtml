@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="TipoDeDeduccionEditDlg" widgetVar="TipoDeDeduccionEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.EditTipoDeDeduccionTitle}" closeOnEscape="true">
+
+            <h:form id="TipoDeDeduccionEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{tipoDeDeduccionController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.EditTipoDeDeduccionLabel_nombreTipoDeduccion}" for="nombreTipoDeduccion" />
+                        <p:inputText id="nombreTipoDeduccion" value="#{tipoDeDeduccionController.selected.nombreTipoDeduccion}" title="#{bundle.EditTipoDeDeduccionTitle_nombreTipoDeduccion}" required="true" requiredMessage="#{bundle.EditTipoDeDeduccionRequiredMessage_nombreTipoDeduccion}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{bundle.EditTipoDeDeduccionLabel_porcentaje}" for="porcentaje" />
+                        <p:inputText id="porcentaje" value="#{tipoDeDeduccionController.selected.porcentaje}" title="#{bundle.EditTipoDeDeduccionTitle_porcentaje}"/>
+
+
+                        <h:outputLabel value="#{bundle.EditTipoDeDeduccionLabel_idTipoDeduccion}" for="idTipoDeduccion" />
+                        <h:outputText id="idTipoDeduccion" value="#{tipoDeDeduccionController.selected.idTipoDeduccion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoDeDeduccionController.save}" value="#{bundle.Save}" update="display,:TipoDeDeduccionListForm:datalist,:TipoDeDeduccionListForm:TipoDeDeduccionDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('TipoDeDeduccionEditDialog'));">
+                        <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{bundle.Cancel}" oncomplete="PF('TipoDeDeduccionEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
